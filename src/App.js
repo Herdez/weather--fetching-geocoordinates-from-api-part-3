@@ -11,9 +11,7 @@ class App extends Component {
       checked: false,
       show: false,
       city: {},
-      day: {},
       country: '',
-      date: '',
       temperature: '',
       pressure: '',
       wind: '',
@@ -89,7 +87,8 @@ class App extends Component {
               week: [ 
                 ...this.state.week,
                 {
-                  day: this.getDayOfWeek(dayOfWeek), 
+                  day: this.getDayOfWeek(dayOfWeek),
+                  date: dayOfWeek.toLocaleDateString(), 
                   icon: this.checkIcon(day.icon), 
                   pressure: day.pressure, 
                   temperature: day.temperatureMin, 
@@ -157,6 +156,7 @@ class App extends Component {
                   {week.map((day, i) => { 
                       return   <div key={ i } className='app__view__data'>
                                   <h5>{ day.day }</h5>
+                                  <p>{ day.date }</p>
                                   <i className={`wi wi-day-${day.icon}`}></i>
                                   <ul>
                                     <li className="span-data">Temp. <strong>{ day.temperature }</strong> </li>
